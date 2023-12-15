@@ -4,7 +4,7 @@
         <form asp-action="Create" method="post">
             
             <h2 class="text-center"> Création des séries </h2>
-
+             <input type="hidden" name="numberOfVariations" value="1" />
             <div class="new-vars row d-flex justify-content-center">
                 <div class="new-vars-curr-var card">
                     <div class="card-body">
@@ -12,7 +12,7 @@
 
                             <label class="form-label">Selectionner le produit correspondant à cette série</label>
                             <div class="form-group multiselect_div">
-                                <select id="edit-piece-prod-select" name="referenceProd" class="multiselect multiselect-custom new-var-prods-select" required>
+                                <select id="edit-piece-prod-select" name="referenceId" class="multiselect multiselect-custom new-var-prods-select" required>
                                      @foreach (var produit in Model.produits)
                                     {
                                         <option value="@produit.Id"> @produit.Reference - @produit.Nom </option>

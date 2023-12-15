@@ -35,9 +35,8 @@ namespace MiniProjet_.NET.Models.Repositories
 
         public DetailCommandeRevendeur GetDetailCommandeRevendeur(int Id)
         {
-            return context.DetailCommandeRevendeurs
-                .Include(D => D.Variation)
-                .FirstOrDefault(d => d.Id == Id);
+            return context.DetailCommandeRevendeurs.Include(c => c.Variation).FirstOrDefault(c => c.Id == Id);
+                
 
 
         }
@@ -53,7 +52,7 @@ namespace MiniProjet_.NET.Models.Repositories
 
         public IEnumerable<DetailCommandeRevendeur> GetDetailCommandeRevendeursByCommandeId(int commandeId)
         {
-            return context.DetailCommandeRevendeurs.Where(rc => rc.RevendeurCommandeId == commandeId);
+            return context.DetailCommandeRevendeurs.Include(c => c.Variation).Where(rc => rc.RevendeurCommandeId == commandeId);
         }
     }
 }

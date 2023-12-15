@@ -86,7 +86,7 @@ namespace MiniProjet_.NET.Controllers
         public ActionResult Index()
         {
             var revendeurCommandes = RevendeurCommandeRepository.GetRevendeurCommandes();
-            
+           
             return View(revendeurCommandes);
         }
 
@@ -96,7 +96,9 @@ namespace MiniProjet_.NET.Controllers
             var revendeurCommande = RevendeurCommandeRepository.GetRevendeurCommande(id);
             var detailsCommande = DetailCommandeRepository.GetDetailCommandeRevendeursByCommandeId(id);
             var ariclesCommande = ArticleRepository.GetArticlesByRevendeurAndCommande(revendeurCommande.RevendeurId, revendeurCommande.Id);
-
+            
+                Console.WriteLine(detailsCommande.ToString());
+            
             var model = (revendeurCommande, detailsCommande, ariclesCommande);
             return View(model);
         }

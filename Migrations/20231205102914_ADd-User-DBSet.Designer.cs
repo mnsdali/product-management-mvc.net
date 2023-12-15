@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using MiniProjet_.NET.Models.Data;
 
@@ -11,9 +12,11 @@ using MiniProjet_.NET.Models.Data;
 namespace MiniProjet_.NET.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20231205102914_ADd-User-DBSet")]
+    partial class ADdUserDBSet
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -466,17 +469,12 @@ namespace MiniProjet_.NET.Migrations
                     b.Property<int>("ProduitId")
                         .HasColumnType("int");
 
-                    b.Property<int?>("RevendeurCommandeId")
-                        .HasColumnType("int");
-
                     b.Property<DateTime>("UpdatedAt")
                         .HasColumnType("datetime2");
 
                     b.HasKey("Id");
 
                     b.HasIndex("ProduitId");
-
-                    b.HasIndex("RevendeurCommandeId");
 
                     b.ToTable("Variations");
                 });
@@ -619,10 +617,6 @@ namespace MiniProjet_.NET.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("MiniProjet_.NET.Models.RevendeurCommande", null)
-                        .WithMany("Variations")
-                        .HasForeignKey("RevendeurCommandeId");
-
                     b.Navigation("Produit");
                 });
 
@@ -639,8 +633,6 @@ namespace MiniProjet_.NET.Migrations
             modelBuilder.Entity("MiniProjet_.NET.Models.RevendeurCommande", b =>
                 {
                     b.Navigation("DetailCommandeRevendeurs");
-
-                    b.Navigation("Variations");
                 });
 
             modelBuilder.Entity("MiniProjet_.NET.Models.Variation", b =>

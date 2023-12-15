@@ -12,10 +12,10 @@
         public DateTime UpdatedAt { get; set; }
 
         // Many to Many [ Commande Revendeur - Variation ]
-        public int VariationId { get; set; }
+        public int VariationId { get; set; } // Required foreign key property
+        public virtual Variation Variation { get; set; }  // Required reference navigation to principal
         public int RevendeurCommandeId { get; set; }
         public RevendeurCommande RevendeurCommande { get; set; }
-        public Variation Variation { get; set; }
         //
     }
 }

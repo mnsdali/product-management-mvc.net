@@ -28,7 +28,8 @@ namespace MiniProjet_.NET.Models.Repositories
         }
         public IEnumerable<RevendeurCommande> GetRevendeurCommandes()
         {
-            return context.RevendeurCommandes.Include(v => v.Revendeur);
+            return context.RevendeurCommandes;
+                  
         }
 
         public RevendeurCommande GetRevendeurCommande(int Id)

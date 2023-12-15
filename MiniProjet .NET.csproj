@@ -1,0 +1,67 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net7.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <RootNamespace>MiniProjet_.NET</RootNamespace>
+    <UserSecretsId>a4ccbeb6-3ffa-442b-802d-9023462cec66</UserSecretsId>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="wwwroot\QrCodes\Articles\AMINE3\**" />
+    <Compile Remove="wwwroot\QrCodes\Articles\AmineFarza\**" />
+    <Compile Remove="wwwroot\QrCodes\Articles\AmineMe3sab\**" />
+    <Compile Remove="wwwroot\QrCodes\Articles\AmineMoza\**" />
+    <Compile Remove="wwwroot\QrCodes\Articles\BLD001\**" />
+    <Compile Remove="wwwroot\QrCodes\Articles\BLD002\**" />
+    <Compile Remove="wwwroot\QrCodes\Articles\DAliAAMAZa\**" />
+    <Content Remove="wwwroot\QrCodes\Articles\AMINE3\**" />
+    <Content Remove="wwwroot\QrCodes\Articles\AmineFarza\**" />
+    <Content Remove="wwwroot\QrCodes\Articles\AmineMe3sab\**" />
+    <Content Remove="wwwroot\QrCodes\Articles\AmineMoza\**" />
+    <Content Remove="wwwroot\QrCodes\Articles\BLD001\**" />
+    <Content Remove="wwwroot\QrCodes\Articles\BLD002\**" />
+    <Content Remove="wwwroot\QrCodes\Articles\DAliAAMAZa\**" />
+    <EmbeddedResource Remove="wwwroot\QrCodes\Articles\AMINE3\**" />
+    <EmbeddedResource Remove="wwwroot\QrCodes\Articles\AmineFarza\**" />
+    <EmbeddedResource Remove="wwwroot\QrCodes\Articles\AmineMe3sab\**" />
+    <EmbeddedResource Remove="wwwroot\QrCodes\Articles\AmineMoza\**" />
+    <EmbeddedResource Remove="wwwroot\QrCodes\Articles\BLD001\**" />
+    <EmbeddedResource Remove="wwwroot\QrCodes\Articles\BLD002\**" />
+    <EmbeddedResource Remove="wwwroot\QrCodes\Articles\DAliAAMAZa\**" />
+    <None Remove="wwwroot\QrCodes\Articles\AMINE3\**" />
+    <None Remove="wwwroot\QrCodes\Articles\AmineFarza\**" />
+    <None Remove="wwwroot\QrCodes\Articles\AmineMe3sab\**" />
+    <None Remove="wwwroot\QrCodes\Articles\AmineMoza\**" />
+    <None Remove="wwwroot\QrCodes\Articles\BLD001\**" />
+    <None Remove="wwwroot\QrCodes\Articles\BLD002\**" />
+    <None Remove="wwwroot\QrCodes\Articles\DAliAAMAZa\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNet.Identity.Core" Version="2.2.4" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity" Version="2.2.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="7.0.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.NewtonsoftJson" Version="7.0.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="7.0.13" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Relational" Version="7.0.13" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SQLite" Version="7.0.13" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="7.0.13" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="7.0.13">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="7.0.9" />
+    <PackageReference Include="Net.Codecrete.QrCodeGenerator" Version="2.0.4" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Controllers\Common\" />
+    <Folder Include="Migrations\" />
+    <Folder Include="wwwroot\QrCodes\Articles\" />
+    <Folder Include="wwwroot\QrCodes\Pieces\" />
+  </ItemGroup>
+
+</Project>

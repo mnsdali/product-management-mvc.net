@@ -22,12 +22,11 @@ namespace MiniProjet_.NET.Models
                                                       //
 
         // One to Many Articles
-        public virtual ICollection<Article> Articles { get; set; } 
+        public virtual ICollection<Article> Articles { get; set; }
         //
 
         // Many to many Revendeur Commande
-        public List<DetailCommandeRevendeur> DetailCommandeRevendeurs { get; } 
-        public List<RevendeurCommande> RevendeurCommandes { get; } 
+        public virtual ICollection<DetailCommandeRevendeur> DetailCommandeRevendeurs { get; set; }
         //
 
         // Many to many Piece

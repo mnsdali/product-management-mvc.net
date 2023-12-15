@@ -14,6 +14,9 @@ namespace MiniProjet_.NET.Models.Data
         public DbSet<Variation> Variations { get; set; }
         public DbSet<Article> Articles { get; set; }
         public DbSet<Piece> Pieces { get; set; }
+
+        
+        public DbSet<ApplicationUser> Users { get; set; }
         public DbSet<RevendeurCommande> RevendeurCommandes { get; set; }
         public DbSet<DetailCommandeRevendeur> DetailCommandeRevendeurs { get; set; }
         public DbSet<PieceVariation> PieceVariations { get; set; }
@@ -33,18 +36,21 @@ namespace MiniProjet_.NET.Models.Data
                 .HasForeignKey(e => e.VariationId)
                 .IsRequired();
 
-            modelBuilder.Entity<RevendeurCommande>()
-                .HasOne(e => e.Revendeur)
-                .WithMany(e => e.RevendeurCommandes)
+            
+            modelBuilder.Entity<Revendeur>()
+                .HasMany(e => e.RevendeurCommandes)
+                .WithOne(e => e.Revendeur)
                 .HasForeignKey(e => e.RevendeurId)
                 .IsRequired();
 
+           
+
             modelBuilder.Entity<Variation>()
-                .HasMany(e => e.RevendeurCommandes)
-                .WithMany(e => e.Variations)
-                .UsingEntity<DetailCommandeRevendeur>(
-                    l => l.HasOne(e => e.RevendeurCommande).WithMany(e => e.DetailCommandeRevendeurs),
-                    r => r.HasOne(e => e.Variation).WithMany(e => e.DetailCommandeRevendeurs));
+                .HasMany(e => e.DetailCommandeRevendeurs)
+                .WithOne(e => e.Variation)
+                .HasForeignKey(e => e.VariationId)
+                .IsRequired();
+
 
             modelBuilder.Entity<Variation>()
                 .HasMany(e => e.Pieces)

@@ -1,4 +1,7 @@
-﻿@model (RevendeurCommande commande, IEnumerable<DetailCommandeRevendeur> detailCommandeRevendeurs, IEnumerable<Article> articles)
+﻿@using Microsoft.AspNetCore.Identity
+@inject UserManager<ApplicationUser> userManager
+
+@model (RevendeurCommande commande, IEnumerable<DetailCommandeRevendeur> detailCommandeRevendeurs, IEnumerable<Article> articles)
 
 <div>
 
@@ -15,10 +18,10 @@
                 </div>
                 <div class="row">
                     <div class="col-6">
-                        <p> Nom du revendeur: <b> @Model.commande.Revendeur.NormalizedUserName</b> </p>
+                        <p> Nom du revendeur: <b> @( userManager.FindByIdAsync(Model.commande.RevendeurId)?.Result.NormalizedUserName) </b> </p>
                     </div>
                     <div class="col-6">
-                        <p> Email du revendeur: <b>@Model.commande.Revendeur.Email</b> </p>
+                        <p> Email du revendeur: <b>@( userManager.FindByIdAsync(Model.commande.RevendeurId)?.Result.Email)</b> </p>
                     </div>
                 </div>
                 
@@ -123,11 +126,11 @@
                 </tr>
                 <tr>
                     <td>
-                        <p> Nom du revendeur: <b> @Model.commande.Revendeur.NormalizedUserName</b> </p>
+                        <p> Nom du revendeur: <b> @( userManager.FindByIdAsync(Model.commande.RevendeurId)?.Result.NormalizedUserName)</b> </p>
                     </td>
                     <td></td>
                     <td>
-                        <p> Email du revendeur: <b>@Model.commande.Revendeur.Email</b> </p>
+                        <p> Email du revendeur: <b>@( userManager.FindByIdAsync(Model.commande.RevendeurId)?.Result.Email)</b> </p>
                     </td>
                 </tr>
                
@@ -155,7 +158,7 @@
                     <hr>
                     <tr>
                         <td colspan="8" ><b align="right">Total</b></td>
-                        <td><b id="total">{{ $commande['total'] }}</b> <small> DT </small>
+                        <td><b id="total">@Model.commande.Total</b> <small> DT </small>
                         </td>
                     </tr>
 

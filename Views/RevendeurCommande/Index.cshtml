@@ -1,4 +1,7 @@
-﻿@model IEnumerable<RevendeurCommande>
+﻿@using Microsoft.AspNetCore.Identity
+@inject UserManager<ApplicationUser> userManager
+
+@model IEnumerable<RevendeurCommande>
 
 
 <h4 class="text-center"> List des commandes des revendeurs</h4>
@@ -29,22 +32,22 @@
                                         </tr>
                                     </tfoot>
                                     <tbody>
-                                        @foreach (var cmd in Model)
-                                        {
-                                            <tr class="curr-commande">
-                                                <td class="reference"> @cmd.Reference </td>
-                                                <td class="username"> @cmd.Revendeur.UserName </td>
-                                                <td class="total"> @cmd.Total </td>
-                                                <td class="date"> @cmd.CreatedAt </td>
-                                                <td>
-                                                <a asp-action="Detail" asp-controller="RevendeurCommande" asp-route-id="@cmd.Id" 
-                                                        class="view-more-commande" title="En-savoir plus"
-                                                        data-toggle="tooltip" data-placement="top">
-                                                        <i class="icon-eye"></i>
-                                                    </a>
-                                                </td>
-                                            </tr>
-                                        }
+                                    @foreach (var cmd in Model)
+                                    {
+                                        <tr class="curr-commande">
+                                            <td class="reference"> @cmd.Reference </td>
+                                            <td class="username"> @(await userManager.FindByIdAsync(cmd.RevendeurId))  </td>
+                                            <td class="total"> @cmd.Total </td>
+                                            <td class="date"> @cmd.CreatedAt </td>
+                                            <td>
+                                                <a asp-action="Details" asp-controller="RevendeurCommande" asp-route-id="@cmd.Id"
+                                                   class="view-more-commande" title="En-savoir plus"
+                                                   data-toggle="tooltip" data-placement="top">
+                                                    <i class="icon-eye"></i>
+                                                </a>
+                                            </td>
+                                        </tr>
+                                    }
                                     </tbody>
                                 </table>
                             </div>
